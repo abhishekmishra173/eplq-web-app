@@ -1,0 +1,240 @@
+/* --- LAYOUT & BACKGROUNDS --- */
+.eplq-page {
+  min-height: 100vh;
+  background-color: #0B1120; /* Deep Navy */
+  color: #F8FAFC;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.eplq-container {
+  max-width: 56rem; /* approx 900px */
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* --- HEADER --- */
+.eplq-header {
+  border-bottom: 1px solid #1E293B;
+  background-color: rgba(15, 23, 42, 0.8); /* Semi-transparent */
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-content {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+.secure-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  background-color: #0F172A;
+  border: 1px solid #1E293B;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-family: monospace;
+  color: #94A3B8;
+}
+
+.status-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #10B981; /* Emerald Green */
+  border-radius: 50%;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* --- SEARCH PANEL --- */
+.search-panel {
+  background-color: #0F172A;
+  border: 1px solid #1E293B;
+  border-radius: 1rem;
+  padding: 0.25rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.search-inner {
+  background-color: #0B1120;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(30, 41, 59, 0.5);
+}
+
+.info-grid {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* On mobile, stack them */
+@media (max-width: 768px) {
+  .info-grid {
+    flex-direction: column;
+  }
+}
+
+.info-card {
+  flex: 1;
+  background-color: rgba(30, 41, 59, 0.5);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.info-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: #94A3B8;
+}
+
+.info-value {
+  font-family: monospace;
+  font-size: 0.875rem;
+}
+
+/* --- BUTTONS --- */
+.eplq-btn {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #0284C7; /* Sky 600 */
+  color: white;
+  font-weight: 600;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.eplq-btn:hover {
+  background-color: #0EA5E9; /* Sky 500 */
+}
+
+.eplq-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* --- TERMINAL OUTPUT --- */
+.terminal-box {
+  margin-top: 1rem;
+  background-color: #000;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: 1px solid #1E293B;
+  font-family: monospace;
+  font-size: 0.75rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  color: rgba(16, 185, 129, 0.9); /* Terminal Green */
+}
+
+/* --- RESULTS LIST --- */
+.results-header {
+  color: #94A3B8;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+}
+
+.result-card {
+  background-color: #0F172A;
+  border: 1px solid #1E293B;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.result-card:hover {
+  background-color: rgba(30, 41, 59, 0.8);
+  border-color: rgba(14, 165, 233, 0.3); /* Blue glow on hover */
+}
+
+.result-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+
+.result-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  padding: 0.125rem 0.5rem;
+  background-color: #1E293B;
+  color: #CBD5E1;
+  border-radius: 0.25rem;
+  border: 1px solid #334155;
+  text-transform: uppercase;
+}
+
+.result-desc {
+  color: #94A3B8;
+  font-size: 0.875rem;
+  margin-top: 0.75rem;
+  max-width: 40rem;
+  line-height: 1.5;
+}
+
+.result-meta {
+  text-align: right;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  border: 2px dashed #1E293B;
+  border-radius: 0.75rem;
+  color: #64748B;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

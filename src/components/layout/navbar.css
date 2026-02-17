@@ -1,0 +1,189 @@
+/* --- TOP HEADER (Transparent) --- */
+.trust-navbar {
+  display: block;
+  padding: 1.5rem 2rem; /* Increased spacing for better look */
+  
+  /* FIXED: Removed background, blur, and border to remove the "black scale" */
+  background: transparent; 
+  backdrop-filter: none;
+  border-bottom: none;
+  
+  position: absolute; /* Changed to absolute so it sits ON TOP of hero, not fixed with a bg */
+  top: 0;
+  left: 0;
+  z-index: 50; /* Lower z-index than the bottom dock */
+  width: 100%;
+}
+
+.container-navbar {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* --- FLOATING BOTTOM DOCK --- */
+.nav-floating-dock {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100; /* Higher z-index to stay above everything */
+  
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  
+  /* Keep the dock background dark & blurry so it's readable */
+  background: rgba(15, 23, 42, 0.85); 
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(61, 242, 224, 0.2);
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.8),
+              0 0 15px rgba(61, 242, 224, 0.1);
+  
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.nav-floating-dock:hover {
+  border-color: rgba(61, 242, 224, 0.5);
+  box-shadow: 0 15px 50px -10px rgba(0, 0, 0, 0.9),
+              0 0 20px rgba(61, 242, 224, 0.2);
+  transform: translateX(-50%) translateY(-2px);
+}
+
+/* --- DOCK ITEMS --- */
+.dock-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  color: #94a3b8;
+  text-decoration: none !important;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+  min-width: 60px;
+}
+
+.dock-item:hover {
+  color: #3DF2E0;
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+.dock-item.active {
+  color: #ffffff;
+}
+
+.dock-item.active .dock-label {
+  font-weight: 600;
+}
+
+.dock-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  width: 4px;
+  height: 4px;
+  background: #3DF2E0;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #3DF2E0;
+}
+
+.dock-label {
+  font-size: 0.7rem;
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+}
+
+/* --- LOGO & CTA STYLES --- */
+.nav-logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none !important;
+}
+
+.nav-icon-box {
+  background: linear-gradient(135deg, #3DF2E0 0%, #3bc4b5 100%);
+  padding: 0.5rem;
+  border-radius: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Added Shadow for visibility against dark bg */
+  box-shadow: 0 0 20px rgba(61, 242, 224, 0.3); 
+}
+
+.nav-brand-group {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.nav-brand-text {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.25rem;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.5); /* Shadow for readability */
+}
+
+.nav-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #3DF2E0;
+  text-shadow: 0 0 10px rgba(61, 242, 224, 0.4);
+}
+
+.nav-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  background: rgba(11, 15, 20, 0.6); /* Slight background for button legibility */
+  backdrop-filter: blur(4px);
+  border: 1px solid #3DF2E0;
+  color: #3DF2E0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+}
+
+.nav-cta-btn:hover {
+  background: #3DF2E0;
+  color: #0B0F14;
+  box-shadow: 0 0 20px rgba(61, 242, 224, 0.4);
+}
+
+.nav-badge-admin {
+  background: rgba(228, 69, 255, 0.1);
+  color: #E445FF;
+  border: 1px solid rgba(228, 69, 255, 0.3);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .nav-floating-dock {
+    width: 90%;
+    justify-content: space-around;
+    padding: 0.75rem 0.5rem;
+    bottom: 1.5rem;
+  }
+  .dock-item {
+    min-width: auto;
+    padding: 0.5rem;
+  }
+}

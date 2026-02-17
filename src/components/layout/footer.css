@@ -1,0 +1,119 @@
+/* --- FOOTER CONTAINER --- */
+.trust-footer {
+  background-color: #0b1120; /* Deepest Navy/Black */
+  color: #f8fafc;
+  padding: 5rem 0 2rem 0;
+  border-top: 1px solid #1e293b; /* Subtle Slate Border */
+  margin-top: auto; /* Pushes footer to bottom if page content is short */
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* --- GRID LAYOUT --- */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* --- COLUMN STYLES --- */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Icon Box (Matches Navbar) */
+.nav-icon-box {
+  background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.2);
+}
+
+.brand-info p {
+  color: #94a3b8; /* Slate 400 */
+  font-size: 0.875rem;
+  line-height: 1.6;
+  max-width: 280px;
+}
+
+/* --- HEADINGS --- */
+.footer-heading {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #38bdf8; /* Sky 400 */
+  margin-bottom: 1.5rem;
+}
+
+/* --- LINKS LIST --- */
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-list li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-list a {
+  color: #94a3b8; /* Slate 400 */
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.footer-list a:hover {
+  color: #ffffff;
+  transform: translateX(4px); /* Subtle slide effect */
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* --- ICONS IN LIST --- */
+.footer-list li.flex {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #cbd5e1;
+  font-size: 0.9rem;
+}
+
+/* --- FOOTER BOTTOM --- */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 4rem;
+  padding-top: 2rem;
+  text-align: center;
+  color: #64748b; /* Slate 500 */
+  font-size: 0.75rem;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2.5rem;
+  }
+
+  .footer-col {
+    align-items: center;
+  }
+
+  .brand-info p {
+    margin: 0 auto;
+  }
+}

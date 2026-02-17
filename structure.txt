@@ -1,0 +1,57 @@
+eplq-web-app/
+├── .git/
+├── .gitignore
+├── .next/
+├── node_modules/
+├── public/
+│ ├── favicon.ico
+│ ├── file.svg
+│ ├── globe.svg
+│ ├── next.svg
+│ ├── vercel.svg
+│ ├── window.svg
+│ └── images/
+│ ├── hero-map-bg.jpg
+│ └── shield-logo.png
+├── src/
+│ ├── app/
+│ │ ├── layout.tsx
+│ │ ├── page.tsx
+│ │ ├── globals.css
+│ │ ├── admin/
+│ │ │ ├── dashboard/
+│ │ │ │ └── page.tsx
+│ │ │ └── login/
+│ │ │ └── page.tsx
+│ │ ├── api/
+│ │ │ ├── admin/
+│ │ │ │ └── upload/
+│ │ │ │ └── route.ts
+│ │ │ └── query/
+│ │ │ └── route.ts
+│ │ ├── public/
+│ │ │ ├── page.tsx
+│ │ │ └── about/
+│ │ │ └── page.tsx
+│ │ └── user/
+│ │ └── search/
+│ │ └── page.tsx
+│ ├── components/
+│ │ ├── layout/
+│ │ │ ├── Footer.tsx
+│ │ │ └── Navbar.tsx
+│ │ └── ui/
+│ │ └── Button.tsx
+│ ├── lib/
+│ │ ├── db.ts
+│ │ └── privacy. ts
+│ └── types.d.ts
+├── eslint.config.mjs
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── README.md
+├── tailwind.config.ts
+└── tsconfig.json

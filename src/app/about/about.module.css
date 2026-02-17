@@ -1,0 +1,96 @@
+.wrapper {
+  min-height: 100vh;
+  background-color: #050a14; /* Deep navy background */
+  color: #ffffff;
+  padding-top: 5rem;
+}
+
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.heroSection {
+  margin-bottom: 4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 2.5rem;
+}
+
+.badge {
+  background: rgba(59, 130, 246, 0.1);
+  color: #60a5fa;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  text-transform: uppercase;
+}
+
+.mainHeading {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 1.5rem 0 0.5rem 0;
+  background: linear-gradient(to bottom, #ffffff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.difficulty {
+  color: #ef4444; /* High difficulty in red */
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.subHeading {
+  font-size: 1.75rem;
+  color: #60a5fa;
+  margin: 3rem 0 1.5rem 0;
+}
+
+.problemStatement {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2rem;
+  border-radius: 1rem;
+  border-left: 4px solid #3b82f6;
+}
+
+.objectivesList {
+  list-style: none;
+  padding: 0;
+}
+
+.objectivesList li {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #94a3b8;
+}
+
+.objectivesList li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #34d399;
+}
+
+.techStackList {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.techTag {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
