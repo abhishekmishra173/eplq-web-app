@@ -10,7 +10,6 @@ export default function Navbar() {
   // Logic to determine current page state
   const isLoginPage = pathname === '/admin/login';
   const isRegisterPage = pathname === '/register';
-  // Show "Admin Session" only if inside /admin but NOT on the login page
   const isAdminDashboard = pathname.startsWith('/admin') && !isLoginPage;
 
   return (
@@ -26,18 +25,15 @@ export default function Navbar() {
             </div>
             <div className="nav-brand-group">
               <span className="nav-brand-text">EPLQ</span>
-              <span className="nav-badge">Secure Node</span>
+              <span className="nav-badge">SECURE NODE</span>
             </div>
           </Link>
 
-          {/* 2. Call to Action (Search / Admin Badge) */}
+          {/* 2. Call to Action */}
           <div className="nav-cta-group">
             {isAdminDashboard ? (
-              <div className="nav-badge-admin">
-                Admin Session
-              </div>
+              <div className="nav-badge-admin">Admin Session</div>
             ) : (!isLoginPage && !isRegisterPage) ? (
-              // Show Search only if NOT on auth pages
               <Link href="/user/search" className="nav-cta-btn">
                 <Search size={16} />
                 <span className="hidden sm:inline">Start Search</span>
@@ -48,14 +44,18 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* --- FLOATING BOTTOM DOCK (Navigation Links) --- */}
+      {/* --- FLOATING BOTTOM DOCK --- */}
       <nav className="nav-floating-dock">
         <Link href="/" className={`dock-item ${pathname === '/' ? 'active' : ''}`}>
           <Home size={20} />
           <span className="dock-label">Home</span>
         </Link>
         
-        <Link href="/user/map" className={`dock-item ${pathname === '/user/map' ? 'active' : ''}`}>
+        {/* REDIRECT TO MAP PAGE */}
+        <Link 
+          href="/user/map" 
+          className={`dock-item ${pathname === '/user/map' ? 'active' : ''}`}
+        >
           <Globe size={20} />
           <span className="dock-label">Map</span>
         </Link>
@@ -65,11 +65,10 @@ export default function Navbar() {
           <span className="dock-label">Protocol</span>
         </Link>
 
-        {/* ADDED: Join / Register Link */}
-        <Link href="/register" className={`dock-item ${pathname === '/register' ? 'active' : ''}`}>
+        {/* <Link href="/register" className={`dock-item ${pathname === '/register' ? 'active' : ''}`}>
           <UserPlus size={20} />
           <span className="dock-label">Join</span>
-        </Link>
+        </Link> */}
         
         <Link href="/admin/login" className={`dock-item ${pathname === '/admin/login' ? 'active' : ''}`}>
           <LogIn size={20} />
