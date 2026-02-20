@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { 
   ShieldCheck, 
   Lock, 
@@ -14,61 +13,50 @@ import {
   FileKey
 } from "lucide-react";
 
-// 1. Dynamic Map Import (Prevents SSR Errors)
-const EncryptionMap = dynamic(() => import("@/components/ui/EncryptionMap"), {
-  ssr: false,
-  loading: () => (
-    <div className="h-full w-full flex flex-col items-center justify-center bg-[#050a14] text-blue-500/50">
-      <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
-      <span className="text-xs font-mono tracking-widest uppercase animate-pulse">
-        Initializing Secure Grid...
-      </span>
-    </div>
-  ),
-});
-
 export default function LandingPage() {
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden bg-[#0B0F14]">
+    <div className="min-h-screen flex flex-col overflow-x-hidden bg-[#0B0F14] relative">
       
       {/* --- HERO SECTION --- */}
-      <section className="hero-section">
-        <div className="hero-glow"></div>
-        
-        <div className="hero-badge">
-          <ShieldCheck size={14} />
-          <span>Military-Grade Privacy v2.4 Active</span>
+      <section className="hero-section relative overflow-hidden">
+        {/* EARTH NETWORK ANIMATION */}
+        <div className="earth-network-container">
+          <div className="earth-globe"></div>
+          <div className="network-grid"></div>
+          <div className="glowing-nodes">
+            <span></span><span></span><span></span>
+          </div>
         </div>
-
-        <h1 className="hero-title">
-          {/* A. Fly-Up Animation for Top Line */}
-          <span className="fly-in-text">
-            Secure Geo-Spatial
-          </span> 
-          <br />
-          {/* B. Typewriter Animation for Bottom Line */}
-          <span className="hero-gradient-text typewriter">
-            Intelligence Grid
-          </span>
-        </h1>
-
-        <p className="hero-desc">
-          Query sensitive location datasets with mathematical privacy guarantees. 
-          Zero-knowledge architecture ensures your data remains invisible to the host.
-        </p>
         
-        <div className="hero-actions">
-          <Link href="/user/search" className="btn-primary text-lg px-8 py-4">
-            <Search size={20} className="mr-2" /> 
-            Initiate Query
-          </Link>
-          <Link href="/protocol" className="btn-secondary px-8 py-4">
-            View Protocol
-          </Link>
+        <div className="relative z-10">
+          <div className="hero-badge">
+            <ShieldCheck size={14} />
+            <span>Military-Grade Privacy v2.4 Active</span>
+          </div>
+
+          <h1 className="hero-title">
+            {/* A. Fly-Up Animation for Top Line */}
+            <span className="fly-in-text">
+              Secure Geo-Spatial
+            </span> 
+            <br />
+            {/* B. Typewriter Animation for Bottom Line */}
+            <span className="hero-gradient-text typewriter">
+              Intelligence Grid
+            </span>
+          </h1>
+
+          <p className="hero-desc">
+            Query sensitive location datasets with mathematical privacy guarantees. 
+            Zero-knowledge architecture ensures your data remains invisible to the host.
+          </p>
+          
+          {/* HERO BUTTONS REMOVED FROM HERE */}
+
         </div>
       </section>
 
-      {/* --- LIVE MAP SECTION --- */}
+      {/* --- LIVE NODE SECTION --- */}
       <section className="map-section">
         <div className="container-center">
           <div className="map-container">
@@ -81,7 +69,7 @@ export default function LandingPage() {
               </div>
               <h2 className="section-title">Global Encryption Grid</h2>
               <p className="section-desc">
-                Visualizing active EPLQ nodes across the network. Your current position is encrypted locally using AES-256 before rendering.
+                Visualizing active EPLQ nodes across the network. Data processing is fully decentralized and anonymized.
               </p>
               
               <div className="space-y-4">
@@ -102,13 +90,22 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Right Side: Visual Map */}
+            {/* Right Side: Abstract Visual Grid */}
             <div className="map-visual">
-              <div className="map-visual-box">
-                <div className="map-grid-overlay"></div>
-                {/* Dynamic Map Component */}
-                <div className="absolute inset-0 z-10">
-                    <EncryptionMap />
+              <div className="map-visual-box relative overflow-hidden bg-[#050a14] border border-slate-800 rounded-xl h-full min-h-[350px] flex items-center justify-center">
+                <div className="map-grid-overlay absolute inset-0 opacity-30 bg-[linear-gradient(rgba(61,242,224,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(61,242,224,0.1)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+                
+                {/* Center Radar/Globe Effect */}
+                <div className="relative z-10 flex items-center justify-center">
+                  <div className="absolute w-[200px] h-[200px] border border-cyan-500/20 rounded-full"></div>
+                  <div className="absolute w-[300px] h-[300px] border border-cyan-500/10 rounded-full border-dashed animate-[spin_20s_linear_infinite]"></div>
+                  
+                  <div className="relative flex h-24 w-24 items-center justify-center">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-500 opacity-20 duration-1000"></span>
+                    <div className="bg-slate-900/80 p-4 rounded-full border border-cyan-500/50 shadow-[0_0_30px_rgba(61,242,224,0.3)]">
+                      <Globe size={40} className="text-cyan-400" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -117,29 +114,23 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* --- CARDS GRID (Compact & Swipable) --- */}
+      {/* --- CARDS GRID --- */}
       <section className="relative z-20">
         <div className="cards-grid">
           <Card 
             icon={<Zap size={24} color="#3DF2E0" />}
             title="Laplace Privacy"
             desc="Noise injection ensures 0% re-identification risk by mathematically blurring precise coordinates."
-            link="/protocol"
-            btnText="Learn More"
           />
           <Card 
             icon={<Lock size={24} color="#34d399" />}
             title="Encrypted Vault"
             desc="All datasets are AES-256 encrypted at the hardware level before leaving your perimeter."
-            link="/user/search"
-            btnText="View Vault"
           />
           <Card 
             icon={<Server size={24} color="#E445FF" />}
             title="Admin Node"
             desc="Manage ε budgets, rotate keys, and coordinate active datasets in real-time."
-            link="/admin/login"
-            btnText="Access Console"
           />
         </div>
       </section>
@@ -167,7 +158,7 @@ export default function LandingPage() {
 
 // --- SUB-COMPONENTS ---
 
-function Card({ icon, title, desc, link, btnText }: any) {
+function Card({ icon, title, desc }: any) {
   return (
     <div className="eplq-card-small group">
       <div className="card-icon-box-small">
@@ -177,14 +168,7 @@ function Card({ icon, title, desc, link, btnText }: any) {
       <p className="text-sm text-slate-400 flex-grow mt-2 mb-8 leading-relaxed">
         {desc}
       </p>
-      
-      <div className="mt-auto">
-        {/* Swipe-Left Animation Button */}
-        <Link href={link} className="btn-swipe w-full transition-transform">
-          <span>{btnText}</span>
-          <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform" />
-        </Link>
-      </div>
+      {/* CARD BUTTONS REMOVED FROM HERE */}
     </div>
   );
 }

@@ -1,80 +1,77 @@
-'use client';
-import './navbar.css';
+"use client";
+
+import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ShieldCheck, Search, Home, FileText, UserPlus, LogIn, Globe } from "lucide-react";
+import { ShieldCheck, Home, FileText, LogIn, Globe } from "lucide-react";
+import "./navbar.css";
 
 export default function Navbar() {
   const pathname = usePathname();
-  
-  // Logic to determine current page state
-  const isLoginPage = pathname === '/admin/login';
-  const isRegisterPage = pathname === '/register';
-  const isAdminDashboard = pathname.startsWith('/admin') && !isLoginPage;
+
+  // --- VISIBILITY LOGIC ---
+  if (
+    pathname === "/user/profile" || 
+    pathname === "/admin/dashboard" ||
+    pathname === "/user/map" 
+  ) {
+    return null; 
+  }
+
+  const isActive = (path: string) => pathname === path;
 
   return (
     <>
-      {/* --- TOP HEADER (Logo + Search) --- */}
-      <header className="trust-navbar">
-        <div className="container-navbar">
+      {/* --- TOP HEADER --- */}
+      <header className="global-top-nav">
+        <div className="nav-container">
           
-          {/* 1. Logo Section */}
-          <Link href="/" className="nav-logo-link">
-            <div className="nav-icon-box">
-              <ShieldCheck size={20} color="#0B0F14" />
+          {/* Logo / Brand */}
+          <Link href="/" className="brand-logo">
+            <div className="brand-icon-box">
+              <ShieldCheck size={20} className="text-cyan-400" />
             </div>
-            <div className="nav-brand-group">
-              <span className="nav-brand-text">EPLQ</span>
-              <span className="nav-badge">SECURE NODE</span>
+            <div className="brand-text">
+              <span className="brand-title">EPLQ</span>
+              <span className="brand-subtitle">SECURE NODE</span>
             </div>
           </Link>
 
-          {/* 2. Call to Action */}
-          <div className="nav-cta-group">
-            {isAdminDashboard ? (
-              <div className="nav-badge-admin">Admin Session</div>
-            ) : (!isLoginPage && !isRegisterPage) ? (
-              <Link href="/user/search" className="nav-cta-btn">
-                <Search size={16} />
-                <span className="hidden sm:inline">Start Search</span>
-              </Link>
-            ) : null}
-          </div>
+          {/* Node Access button removed as requested */}
 
         </div>
       </header>
 
       {/* --- FLOATING BOTTOM DOCK --- */}
-      <nav className="nav-floating-dock">
-        <Link href="/" className={`dock-item ${pathname === '/' ? 'active' : ''}`}>
-          <Home size={20} />
-          <span className="dock-label">Home</span>
-        </Link>
-        
-        {/* REDIRECT TO MAP PAGE */}
-        <Link 
-          href="/user/map" 
-          className={`dock-item ${pathname === '/user/map' ? 'active' : ''}`}
-        >
-          <Globe size={20} />
-          <span className="dock-label">Map</span>
-        </Link>
-        
-        <Link href="/protocol" className={`dock-item ${pathname === '/protocol' ? 'active' : ''}`}>
-          <FileText size={20} />
-          <span className="dock-label">Protocol</span>
-        </Link>
+      <div className="floating-dock-wrapper">
+        <nav className="floating-dock">
+          
+          <Link href="/" className={`dock-item ${isActive("/") ? "active" : ""}`}>
+            <Home size={20} className="dock-icon" />
+            <span className="dock-label">Home</span>
+            {isActive("/") && <span className="active-dot"></span>}
+          </Link>
 
-        {/* <Link href="/register" className={`dock-item ${pathname === '/register' ? 'active' : ''}`}>
-          <UserPlus size={20} />
-          <span className="dock-label">Join</span>
-        </Link> */}
-        
-        <Link href="/admin/login" className={`dock-item ${pathname === '/admin/login' ? 'active' : ''}`}>
-          <LogIn size={20} />
-          <span className="dock-label">Login</span>
-        </Link>
-      </nav>
+          <Link href="/user/search" className={`dock-item ${isActive("/user/search") ? "active" : ""}`}>
+            <Globe size={20} className="dock-icon" />
+            <span className="dock-label">Map</span>
+            {isActive("/user/search") && <span className="active-dot"></span>}
+          </Link>
+
+          <Link href="/protocol" className={`dock-item ${isActive("/protocol") ? "active" : ""}`}>
+            <FileText size={20} className="dock-icon" />
+            <span className="dock-label">Protocol</span>
+            {isActive("/protocol") && <span className="active-dot"></span>}
+          </Link>
+
+          <Link href="/admin/login" className={`dock-item ${isActive("/admin/login") ? "active" : ""}`}>
+            <LogIn size={20} className="dock-icon" />
+            <span className="dock-label">Login</span>
+            {isActive("/admin/login") && <span className="active-dot"></span>}
+          </Link>
+
+        </nav>
+      </div>
     </>
   );
 }

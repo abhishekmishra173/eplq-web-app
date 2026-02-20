@@ -193,3 +193,43 @@
 .nav-item { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
 .nav-item:hover, .nav-item.active { color: white; }
 .dot { opacity: 0.3; }
+
+/* --- Valid Input Tick Animation --- */
+.input-wrapper {
+  position: relative; /* Ensure the wrapper can hold the absolute icon */
+  display: flex;
+  align-items: center;
+}
+
+.valid-tick {
+  position: absolute;
+  right: 14px;
+  color: #10b981; /* Emerald Green */
+  animation: popInTick 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popInTick {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* --- Success Message Alert --- */
+.success-msg {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(16, 185, 129, 0.1); /* Light Emerald */
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981; /* Emerald Green */
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  animation: popInTick 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
