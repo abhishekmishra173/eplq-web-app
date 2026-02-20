@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ShieldCheck, Home, FileText, LogIn, Globe } from "lucide-react";
+import { ShieldCheck, Home, FileText, LogIn, Globe, Info } from "lucide-react"; // <-- Added Info icon
 import "./navbar.css";
 
 export default function Navbar() {
@@ -37,8 +37,6 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Node Access button removed as requested */}
-
         </div>
       </header>
 
@@ -52,16 +50,23 @@ export default function Navbar() {
             {isActive("/") && <span className="active-dot"></span>}
           </Link>
 
-          <Link href="/user/search" className={`dock-item ${isActive("/user/search") ? "active" : ""}`}>
+          <Link href="/user/map" className={`dock-item ${isActive("/user/map") ? "active" : ""}`}>
             <Globe size={20} className="dock-icon" />
             <span className="dock-label">Map</span>
-            {isActive("/user/search") && <span className="active-dot"></span>}
+            {isActive("/user/map") && <span className="active-dot"></span>}
           </Link>
 
           <Link href="/protocol" className={`dock-item ${isActive("/protocol") ? "active" : ""}`}>
             <FileText size={20} className="dock-icon" />
             <span className="dock-label">Protocol</span>
             {isActive("/protocol") && <span className="active-dot"></span>}
+          </Link>
+
+          {/* --- NEW ABOUT LINK --- */}
+          <Link href="/about" className={`dock-item ${isActive("/about") ? "active" : ""}`}>
+            <Info size={20} className="dock-icon" />
+            <span className="dock-label">About</span>
+            {isActive("/about") && <span className="active-dot"></span>}
           </Link>
 
           <Link href="/admin/login" className={`dock-item ${isActive("/admin/login") ? "active" : ""}`}>
